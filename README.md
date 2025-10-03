@@ -1,18 +1,3 @@
-# ReST: Remarkably Simple Transferability Estimation
-
-![REST Method](rest.png)
-
-## Overview
-**REST (Remarkably Simple Transferability Estimation)** is a lightweight yet effective method for estimating the transferability of pre-trained models.  
-It combines **weight-space generalization (G-score)** and **activation-space learnability (L-score)** with two interpretable hyperparameters:
-
-- **Gamma (γ):** Balances weight geometry vs. activation shifts  
-- **Alpha (α):** Balances penultimate vs. classifier layer features  
-
-This simple rule provides strong correlation with fine-tuning accuracy across diverse models and datasets.
-
----
-
 ## Quick Start
 
 ### 1. Extract Features from Dataset (for ReST)
