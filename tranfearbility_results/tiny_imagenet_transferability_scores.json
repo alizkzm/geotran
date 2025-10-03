@@ -1,0 +1,520 @@
+{
+  "mobilenet_v2": {
+    "penultimate_layer": [
+      1.8738956451416016,
+      173.46961975097656
+    ],
+    "classifier_layer": [
+      1.9632720947265625,
+      146.98558044433594
+    ],
+    "penultimate_layer_source": "classifier_pre_hook",
+    "penultimate_weight_layer_name": "features.18.0",
+    "classifier_layer_source": "classifier_hook",
+    "images_used_count": 256,
+    "activation_space_shape": {
+      "penultimate_layer": [
+        256,
+        1280
+      ],
+      "classifier_layer": [
+        256,
+        1000
+      ]
+    },
+    "classifier_layer_name": "classifier.1",
+    "penultimate_layer_name": "",
+    "weight_classifier": {
+      "stable_rank": 64.36865234375,
+      "effective_rank": 797.60498046875,
+      "shape": [
+        1000,
+        1280
+      ],
+      "matrix_shape": [
+        1000,
+        1280
+      ]
+    },
+    "weight_penultimate": {
+      "stable_rank": 40.376922607421875,
+      "effective_rank": 305.1943359375,
+      "shape": [
+        1280,
+        320,
+        1,
+        1
+      ],
+      "matrix_shape": [
+        1280,
+        320
+      ]
+    }
+  },
+  "mnasnet1_0": {
+    "penultimate_layer": [
+      1.6683845520019531,
+      174.67092895507812
+    ],
+    "classifier_layer": [
+      1.6825882196426392,
+      137.5358123779297
+    ],
+    "penultimate_layer_source": "classifier_pre_hook",
+    "penultimate_weight_layer_name": "layers.14",
+    "classifier_layer_source": "classifier_hook",
+    "images_used_count": 256,
+    "activation_space_shape": {
+      "penultimate_layer": [
+        256,
+        1280
+      ],
+      "classifier_layer": [
+        256,
+        1000
+      ]
+    },
+    "classifier_layer_name": "classifier.1",
+    "penultimate_layer_name": "",
+    "weight_classifier": {
+      "stable_rank": 37.58501434326172,
+      "effective_rank": 783.3517456054688,
+      "shape": [
+        1000,
+        1280
+      ],
+      "matrix_shape": [
+        1000,
+        1280
+      ]
+    },
+    "weight_penultimate": {
+      "stable_rank": 102.205810546875,
+      "effective_rank": 307.1100769042969,
+      "shape": [
+        1280,
+        320,
+        1,
+        1
+      ],
+      "matrix_shape": [
+        1280,
+        320
+      ]
+    }
+  },
+  "densenet121": {
+    "penultimate_layer": [
+      1.447658896446228,
+      152.46231079101562
+    ],
+    "classifier_layer": [
+      1.6688439846038818,
+      128.56661987304688
+    ],
+    "penultimate_layer_source": "classifier_pre_hook",
+    "penultimate_weight_layer_name": "features.denseblock4.denselayer16.conv2",
+    "classifier_layer_source": "classifier_hook",
+    "images_used_count": 256,
+    "activation_space_shape": {
+      "penultimate_layer": [
+        256,
+        1024
+      ],
+      "classifier_layer": [
+        256,
+        1000
+      ]
+    },
+    "classifier_layer_name": "classifier",
+    "penultimate_layer_name": "",
+    "weight_classifier": {
+      "stable_rank": 40.17837142944336,
+      "effective_rank": 449.4917907714844,
+      "shape": [
+        1000,
+        1024
+      ],
+      "matrix_shape": [
+        1000,
+        1024
+      ]
+    },
+    "weight_penultimate": {
+      "stable_rank": 16.096603393554688,
+      "effective_rank": 31.477323532104492,
+      "shape": [
+        32,
+        128,
+        3,
+        3
+      ],
+      "matrix_shape": [
+        32,
+        1152
+      ]
+    }
+  },
+  "densenet169": {
+    "penultimate_layer": [
+      1.4825897216796875,
+      170.16139221191406
+    ],
+    "classifier_layer": [
+      1.8081735372543335,
+      145.0374755859375
+    ],
+    "penultimate_layer_source": "classifier_pre_hook",
+    "penultimate_weight_layer_name": "features.denseblock4.denselayer32.conv2",
+    "classifier_layer_source": "classifier_hook",
+    "images_used_count": 256,
+    "activation_space_shape": {
+      "penultimate_layer": [
+        256,
+        1664
+      ],
+      "classifier_layer": [
+        256,
+        1000
+      ]
+    },
+    "classifier_layer_name": "classifier",
+    "penultimate_layer_name": "",
+    "weight_classifier": {
+      "stable_rank": 46.05636215209961,
+      "effective_rank": 601.736328125,
+      "shape": [
+        1000,
+        1664
+      ],
+      "matrix_shape": [
+        1000,
+        1664
+      ]
+    },
+    "weight_penultimate": {
+      "stable_rank": 12.438898086547852,
+      "effective_rank": 31.070558547973633,
+      "shape": [
+        32,
+        128,
+        3,
+        3
+      ],
+      "matrix_shape": [
+        32,
+        1152
+      ]
+    }
+  },
+  "densenet201": {
+    "penultimate_layer": [
+      1.5177122354507446,
+      168.39979553222656
+    ],
+    "classifier_layer": [
+      1.624024510383606,
+      137.03587341308594
+    ],
+    "penultimate_layer_source": "classifier_pre_hook",
+    "penultimate_weight_layer_name": "features.denseblock4.denselayer32.conv2",
+    "classifier_layer_source": "classifier_hook",
+    "images_used_count": 256,
+    "activation_space_shape": {
+      "penultimate_layer": [
+        256,
+        1920
+      ],
+      "classifier_layer": [
+        256,
+        1000
+      ]
+    },
+    "classifier_layer_name": "classifier",
+    "penultimate_layer_name": "",
+    "weight_classifier": {
+      "stable_rank": 47.06623077392578,
+      "effective_rank": 638.9669189453125,
+      "shape": [
+        1000,
+        1920
+      ],
+      "matrix_shape": [
+        1000,
+        1920
+      ]
+    },
+    "weight_penultimate": {
+      "stable_rank": 13.948810577392578,
+      "effective_rank": 31.33094596862793,
+      "shape": [
+        32,
+        128,
+        3,
+        3
+      ],
+      "matrix_shape": [
+        32,
+        1152
+      ]
+    }
+  },
+  "resnet34": {
+    "penultimate_layer": [
+      1.3006865978240967,
+      131.4612579345703
+    ],
+    "classifier_layer": [
+      1.611395001411438,
+      115.3327407836914
+    ],
+    "penultimate_layer_source": "classifier_pre_hook",
+    "penultimate_weight_layer_name": "layer4.2.conv2",
+    "classifier_layer_source": "classifier_hook",
+    "images_used_count": 256,
+    "activation_space_shape": {
+      "penultimate_layer": [
+        256,
+        512
+      ],
+      "classifier_layer": [
+        256,
+        1000
+      ]
+    },
+    "classifier_layer_name": "fc",
+    "penultimate_layer_name": "",
+    "weight_classifier": {
+      "stable_rank": 36.08250045776367,
+      "effective_rank": 416.72491455078125,
+      "shape": [
+        1000,
+        512
+      ],
+      "matrix_shape": [
+        1000,
+        512
+      ]
+    },
+    "weight_penultimate": {
+      "stable_rank": 100.39714050292969,
+      "effective_rank": 421.89215087890625,
+      "shape": [
+        512,
+        512,
+        3,
+        3
+      ],
+      "matrix_shape": [
+        512,
+        4608
+      ]
+    }
+  },
+  "resnet50": {
+    "penultimate_layer": [
+      1.4376760721206665,
+      145.1614532470703
+    ],
+    "classifier_layer": [
+      1.4911985397338867,
+      137.26522827148438
+    ],
+    "penultimate_layer_source": "classifier_pre_hook",
+    "penultimate_weight_layer_name": "layer4.2.conv3",
+    "classifier_layer_source": "classifier_hook",
+    "images_used_count": 256,
+    "activation_space_shape": {
+      "penultimate_layer": [
+        256,
+        2048
+      ],
+      "classifier_layer": [
+        256,
+        1000
+      ]
+    },
+    "classifier_layer_name": "fc",
+    "penultimate_layer_name": "",
+    "weight_classifier": {
+      "stable_rank": 97.06668090820312,
+      "effective_rank": 926.2550048828125,
+      "shape": [
+        1000,
+        2048
+      ],
+      "matrix_shape": [
+        1000,
+        2048
+      ]
+    },
+    "weight_penultimate": {
+      "stable_rank": 5.590878486633301,
+      "effective_rank": 438.77899169921875,
+      "shape": [
+        2048,
+        512,
+        1,
+        1
+      ],
+      "matrix_shape": [
+        2048,
+        512
+      ]
+    }
+  },
+  "resnet101": {
+    "penultimate_layer": [
+      1.3362637758255005,
+      137.43629455566406
+    ],
+    "classifier_layer": [
+      1.354087471961975,
+      128.6099090576172
+    ],
+    "penultimate_layer_source": "classifier_pre_hook",
+    "penultimate_weight_layer_name": "layer4.2.conv3",
+    "classifier_layer_source": "classifier_hook",
+    "images_used_count": 256,
+    "activation_space_shape": {
+      "penultimate_layer": [
+        256,
+        2048
+      ],
+      "classifier_layer": [
+        256,
+        1000
+      ]
+    },
+    "classifier_layer_name": "fc",
+    "penultimate_layer_name": "",
+    "weight_classifier": {
+      "stable_rank": 97.92184448242188,
+      "effective_rank": 936.1483764648438,
+      "shape": [
+        1000,
+        2048
+      ],
+      "matrix_shape": [
+        1000,
+        2048
+      ]
+    },
+    "weight_penultimate": {
+      "stable_rank": 5.78748083114624,
+      "effective_rank": 449.08453369140625,
+      "shape": [
+        2048,
+        512,
+        1,
+        1
+      ],
+      "matrix_shape": [
+        2048,
+        512
+      ]
+    }
+  },
+  "resnet152": {
+    "penultimate_layer": [
+      1.378901720046997,
+      154.32423400878906
+    ],
+    "classifier_layer": [
+      1.357600212097168,
+      140.97171020507812
+    ],
+    "penultimate_layer_source": "classifier_pre_hook",
+    "penultimate_weight_layer_name": "layer4.2.conv3",
+    "classifier_layer_source": "classifier_hook",
+    "images_used_count": 256,
+    "activation_space_shape": {
+      "penultimate_layer": [
+        256,
+        2048
+      ],
+      "classifier_layer": [
+        256,
+        1000
+      ]
+    },
+    "classifier_layer_name": "fc",
+    "penultimate_layer_name": "",
+    "weight_classifier": {
+      "stable_rank": 101.00163269042969,
+      "effective_rank": 938.2693481445312,
+      "shape": [
+        1000,
+        2048
+      ],
+      "matrix_shape": [
+        1000,
+        2048
+      ]
+    },
+    "weight_penultimate": {
+      "stable_rank": 5.796802520751953,
+      "effective_rank": 446.4140319824219,
+      "shape": [
+        2048,
+        512,
+        1,
+        1
+      ],
+      "matrix_shape": [
+        2048,
+        512
+      ]
+    }
+  },
+  "googlenet": {
+    "penultimate_layer": [
+      1.4169703722000122,
+      147.13565063476562
+    ],
+    "classifier_layer": [
+      2.0057735443115234,
+      132.854248046875
+    ],
+    "penultimate_layer_source": "classifier_pre_hook",
+    "penultimate_weight_layer_name": "aux2.fc2",
+    "classifier_layer_source": "classifier_hook",
+    "images_used_count": 256,
+    "activation_space_shape": {
+      "penultimate_layer": [
+        256,
+        1024
+      ],
+      "classifier_layer": [
+        256,
+        1000
+      ]
+    },
+    "classifier_layer_name": "fc",
+    "penultimate_layer_name": "",
+    "weight_classifier": {
+      "stable_rank": 60.07893753051758,
+      "effective_rank": 638.1265258789062,
+      "shape": [
+        1000,
+        1024
+      ],
+      "matrix_shape": [
+        1000,
+        1024
+      ]
+    },
+    "weight_penultimate": {
+      "stable_rank": 252.57704162597656,
+      "effective_rank": 813.3468017578125,
+      "shape": [
+        1000,
+        1024
+      ],
+      "matrix_shape": [
+        1000,
+        1024
+      ]
+    }
+  }
+}
