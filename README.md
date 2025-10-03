@@ -1,4 +1,4 @@
-# REST: Remarkably Simple Transferability Estimation
+# ReST: Remarkably Simple Transferability Estimation
 
 ![REST Method](rest.png)
 
@@ -15,12 +15,16 @@ This simple rule provides strong correlation with fine-tuning accuracy across di
 
 ## Quick Start
 
-### 1. Extract Features from Source Dataset
+### 1. Extract Features from Dataset
 ```bash
 python scripts/rank_measure.py -s 2 -t tiny_imagenet
 ```
+- **`-s` / `--samples`**: Images per class to sample (default: 2)  
+- **`-t` / `--target`**: Target dataset name (default: cifar100)  
+- **`--batch-size`**: Batch size for processing (default: 32)  
+- **`--max-feats`**: Max features per layer for downprojection (default: 4096)  
 
-### 2. Extract Features from Target Dataset
+### 2. Extract Features from Another Dataset
 ```bash
 python scripts/rank_measure.py -s 2 -t cifar100
 ```
@@ -29,6 +33,10 @@ python scripts/rank_measure.py -s 2 -t cifar100
 ```bash
 python scripts/te_metric.py -t cifar100 -te rest
 ```
+- **`-t` / `--target`**: Target dataset (default: cifar100)  
+- **`-te` / `--method`**: Method to use [rest, logme, leep, energy, lda, sfda] (default: rest)  
+- **`--gamma`**: REST γ parameter (default: 0.21)  
+- **`--alpha`**: REST α parameter (default: 0.51)  
 
 ### 4. Evaluate Correlation with Fine-tuning Accuracy
 ```bash
@@ -66,6 +74,5 @@ done
 - **Model A: REST = 1.2 → Excellent transferability**  
 - **Model B: REST = 0.3 → Good transferability**  
 - **Model C: REST = -0.8 → Poor transferability**  
-
 
 ---
