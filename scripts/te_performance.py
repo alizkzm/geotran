@@ -45,7 +45,6 @@ def evaluate_correlation(scores: dict, ground_truth: dict, exclude_models=None):
     Args:
         scores: Dictionary of model -> transferability score
         ground_truth: Dictionary of model -> fine-tune accuracy
-        exclude_models: List of models to exclude
 
     Returns:
         Dictionary with correlation metrics
@@ -112,27 +111,21 @@ def main():
         print(f"Error: {e}")
         return
 
-    print(f"Evaluating {args.method.upper()} on {args.target}...")
-    print(f"Excluding models: {args.exclude}")
-
     results = evaluate_correlation(scores, ground_truth, exclude_models=args.exclude)
 
     if "error" in results:
         print(f"\nError: {results['error']}")
-        print(f"Number of models: {results['n_models']}")
         return
 
     print(f"\nCorrelation Results:")
     print(f"  Weighted Kendall Tau: {results['weighted_kendall']:.4f} (p={results['weighted_kendall_pvalue']:.4e})")
     print(f"  Kendall Tau:          {results['kendall_tau']:.4f} (p={results['kendall_tau_pvalue']:.4e})")
     print(f"  Spearman Rho:         {results['spearman_rho']:.4f} (p={results['spearman_pvalue']:.4e})")
-    print(f"  Number of models:     {results['n_models']}")
 
     # Save detailed results
     output_file = results_dir / f"{args.target}_{args.method}_evaluation.json"
     with open(output_file, 'w') as f:
         json.dump(results, f, indent=2)
-    print(f"\nSaved detailed results to {output_file}")
 
     # Create comparison DataFrame
     comparison_data = []
@@ -151,7 +144,7 @@ def main():
     print(f"Saved comparison to {csv_file}")
 
     print("\nModel Rankings:")
-    print(df.to_string(index=False))
+    print(df.head(3).to_string(index=False))
 
 
 if __name__ == "__main__":
