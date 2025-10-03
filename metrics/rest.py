@@ -3,8 +3,9 @@ REST (Rank-based Estimation of Transferability) metric.
 """
 
 import json
+import numpy as np
 from pathlib import Path
-from typing import Dict, Any, Optional
+from typing import Dict, Any, Optional, Tuple
 
 
 def get_nested(d: dict, *keys, default=None):
@@ -32,30 +33,17 @@ def sr_activation(model_dict: dict, layer_key: str) -> Optional[float]:
     return None
 
 
-def compute_rest_score(
-        target_data: dict,
-        source_data: dict,
-        model_name: str,
-        gamma: float = 0.21,
-        alpha: float = 0.51
-) -> Optional[float]:
+def compute_features_for_model(
+    target_data: dict,
+    source_data: dict,
+    model_name: str
+) -> Optional[Dict[str, float]]:
     """
-    Compute REST score for a single model.
-
-    REST = (1 - gamma) * G + gamma * L
-    where:
-        G = alpha * pen_before_weight + (1 - alpha) * clf_before_weight
-        L = alpha * pen_act + (1 - alpha) * clf_act
-
-    Args:
-        target_data: Target dataset features for the model
-        source_data: Source dataset features for the model
-        model_name: Name of the model
-        gamma: Weight between geometry (G) and activation shift (L)
-        alpha: Weight between penultimate and classifier features
-
+    Extract all REST features for a single model.
+    
     Returns:
-        REST score or None if features are missing
+        Dictionary with keys: pen_act, clf_act, pen_before_weight, clf_before_weight
+        or None if features are missing
     """
     tgt_model = target_data.get(model_name)
     src_model = source_data.get(model_name)
@@ -106,29 +94,29 @@ def compute_rest_score(
     pen_before_weight = b_pen_sr / b_pen_dim
     clf_before_weight = b_cls_sr / b_cls_dim
 
-    # Compute REST score
-    G = alpha * pen_before_weight + (1 - alpha) * clf_before_weight
-    L = alpha * pen_act + (1 - alpha) * clf_act
-    rest_score = (1 - gamma) * G + gamma * L
-
-    return rest_score
+    return {
+        "pen_act": pen_act,
+        "clf_act": clf_act,
+        "pen_before_weight": pen_before_weight,
+        "clf_before_weight": clf_before_weight
+    }
 
 
 def compute_rest_for_dataset(
-        target_file: str,
-        source_file: str,
-        gamma: float = 0.21,
-        alpha: float = 0.51
+    target_file: str,
+    source_file: str,
+    gamma: float = 0.21,
+    alpha: float = 0.51
 ) -> Dict[str, float]:
     """
-    Compute REST scores for all models in a target dataset.
-
+    Compute REST scores for all models in a target dataset with z-score normalization.
+    
     Args:
         target_file: Path to target dataset JSON
         source_file: Path to source dataset JSON
-        gamma: Weight parameter for REST
-        alpha: Weight parameter for REST
-
+        gamma: Weight parameter for REST (between geometry G and activation shift L)
+        alpha: Weight parameter for REST (between penultimate and classifier)
+        
     Returns:
         Dictionary mapping model names to REST scores
     """
@@ -138,12 +126,55 @@ def compute_rest_for_dataset(
     with open(source_file, 'r') as f:
         source_data = json.load(f)
 
-    scores = {}
+    # Extract features for all models
+    features_dict = {}
     common_models = set(target_data.keys()) & set(source_data.keys())
-
+    
     for model_name in common_models:
-        score = compute_rest_score(target_data, source_data, model_name, gamma, alpha)
-        if score is not None:
-            scores[model_name] = score
-
-    return scores
+        features = compute_features_for_model(target_data, source_data, model_name)
+        if features is not None:
+            features_dict[model_name] = features
+    
+    if len(features_dict) < 2:
+        # Need at least 2 models for z-score normalization
+        return {}
+    
+    # Collect all feature values for z-score normalization
+    feature_names = ["pen_act", "clf_act", "pen_before_weight", "clf_before_weight"]
+    feature_arrays = {name: [] for name in feature_names}
+    model_list = []
+    
+    for model_name, features in features_dict.items():
+        model_list.append(model_name)
+        for name in feature_names:
+            feature_arrays[name].append(features[name])
+    
+    # Convert to numpy arrays and compute z-scores
+    z_scores = {}
+    for name in feature_names:
+        arr = np.array(feature_arrays[name])
+        mean = np.mean(arr)
+        std = np.std(arr, ddof=1)  # Use sample std (n-1)
+        
+        if std < 1e-10:  # Avoid division by zero
+            z_scores[name] = np.zeros_like(arr)
+        else:
+            z_scores[name] = (arr - mean) / std
+    
+    # Compute REST scores using z-normalized features
+    rest_scores = {}
+    for idx, model_name in enumerate(model_list):
+        # Get z-scored features for this model
+        pen_act_z = z_scores["pen_act"][idx]
+        clf_act_z = z_scores["clf_act"][idx]
+        pen_weight_z = z_scores["pen_before_weight"][idx]
+        clf_weight_z = z_scores["clf_before_weight"][idx]
+        
+        # Compute REST score
+        G = alpha * pen_weight_z + (1 - alpha) * clf_weight_z
+        L = alpha * pen_act_z + (1 - alpha) * clf_act_z
+        rest_score = (1 - gamma) * G + gamma * L
+        
+        rest_scores[model_name] = float(rest_score)
+    
+    return rest_scores
