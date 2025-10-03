@@ -15,7 +15,7 @@ This simple rule provides strong correlation with fine-tuning accuracy across di
 
 ## Quick Start
 
-### 1. Extract Features from Dataset
+### 1. Extract Features from Dataset (for ReST)
 ```bash
 python scripts/rank_measure.py -s 2 -t cifar100
 ```
@@ -24,12 +24,8 @@ python scripts/rank_measure.py -s 2 -t cifar100
 - **`--batch-size`**: Batch size for processing (default: 32)  
 - **`--max-feats`**: Max features per layer for downprojection (default: 4096)  
 
-### 2. Extract Features from Another Dataset
-```bash
-python scripts/rank_measure.py -s 2 -t cifar100
-```
 
-### 3. Compute REST Scores
+### 2. Compute REST Scores
 ```bash
 python scripts/te_metric.py -t cifar100 -te rest
 ```
@@ -38,7 +34,7 @@ python scripts/te_metric.py -t cifar100 -te rest
 - **`--gamma`**: REST γ parameter (default: 0.21)  
 - **`--alpha`**: REST α parameter (default: 0.51)  
 
-### 4. Evaluate Correlation with Fine-tuning Accuracy
+### 3. Evaluate Correlation with Fine-tuning Accuracy
 ```bash
 python scripts/te_performance.py -te rest -t cifar100
 ```
