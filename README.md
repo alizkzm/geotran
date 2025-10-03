@@ -1,6 +1,6 @@
 # REST: Remarkably Simple Transferability Estimation
 
-![REST Method](6598a70c-cb35-47ca-9f9c-c214b2b2b695.png)
+![REST Method](rest.png)
 
 ## Overview
 **REST (Remarkably Simple Transferability Estimation)** is a lightweight yet effective method for estimating the transferability of pre-trained models.  
@@ -67,10 +67,5 @@ done
 - **Model B: REST = 0.3 → Good transferability**  
 - **Model C: REST = -0.8 → Poor transferability**  
 
----
-
-## Method Diagram
-
-![REST Pipeline](rest.png)
 
 ---
