@@ -17,7 +17,7 @@ This simple rule provides strong correlation with fine-tuning accuracy across di
 
 ### 1. Extract Features from Dataset
 ```bash
-python scripts/rank_measure.py -s 2 -t tiny_imagenet
+python scripts/rank_measure.py -s 2 -t cifar100
 ```
 - **`-s` / `--samples`**: Images per class to sample (default: 2)  
 - **`-t` / `--target`**: Target dataset name (default: cifar100)  
