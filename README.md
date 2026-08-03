@@ -1,4 +1,4 @@
-# ReST — Remarkably Simple Transferability Estimation
+# ReST 
 
 Label-free transferability estimation for pre-trained model selection.
 
