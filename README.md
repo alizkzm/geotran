@@ -73,7 +73,7 @@ Everything is driven by a YAML file:
 ```yaml
 gamma: 0.2                 # G vs L balance (0.21 CNNs, 0.65 transformers)
 num_samples: 200           # unlabeled target samples
-use_clf: true              # false drops both classifier terms for every model
+use_clf: true              
 source_dataset: mini_imagenet
 target_datasets: [cifar10, cifar100]
 model_hub: [resnet50, densenet121, ...]
