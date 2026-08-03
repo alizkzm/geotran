@@ -16,9 +16,6 @@ ReST(f, D_T) = (1 − γ) · G(f) + γ · L(f, D_S, D_T)
 | `G` | intrinsic generalization capacity | stable rank of the penultimate and classifier **weight** matrices |
 | `L` | adaptation flexibility | shift in stable rank of the penultimate and classifier **activations**, target vs. source |
 
-For a matrix `X`, the stable rank is `‖X‖_F² / ‖X‖_2²` — a continuous, noise-robust measure of
-effective dimensionality.
-
 ---
 
 
