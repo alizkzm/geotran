@@ -1,0 +1,33 @@
+# Transformer hub: 8 self-supervised + 8 supervised
+seed: 123
+gamma: 0.65
+num_samples: 200
+sample_seed: 1234
+batch_size: 32
+max_feats: 4096
+use_clf: true
+
+source_dataset: mini_imagenet
+target_datasets:
+  - cifar10
+  - cifar100
+
+model_hub:
+  - mae_vitb16
+  - mae_vitl16
+  - dino_vitb16
+  - dino_vits8
+  - mocov3_vitb16
+  - simmim_vitb16
+  - mocov3_vits16
+  - dino_vits16
+  - vit_t_16
+  - vit_s_16
+  - vit_b_16
+  - pvtv2_b2
+  - pvt_t
+  - pvt_s
+  - pvt_m
+  - swin_t
+
+out_dir: rest_json_vit
