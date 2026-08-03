@@ -1,0 +1,27 @@
+# Supervised CNN hub
+seed: 123
+gamma: 0.2
+num_samples: 200
+sample_seed: 1234
+batch_size: 32
+max_feats: 4096
+use_clf: true
+
+source_dataset: mini_imagenet
+target_datasets:
+  - cifar10
+  - cifar100
+
+model_hub:
+  - mobilenet_v2
+  - mnasnet1_0
+  - densenet121
+  - densenet169
+  - densenet201
+  - resnet34
+  - resnet50
+  - resnet101
+  - resnet152
+  - googlenet
+
+out_dir: rest_json
