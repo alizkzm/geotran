@@ -97,7 +97,6 @@ python scripts/baselines.py --config configs/cnn.yaml --label-independent
 ```
 
 In the label-independent setting the pseudo-labels are generated **once per target dataset**,
-independently of the models being ranked, and the same labels are given to every method — so no
-method is scored on labels derived from its own representation.
+independently of the models being ranked, and the same labels are given to every method.
 
 ---
